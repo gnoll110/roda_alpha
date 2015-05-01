@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-load './config.ru'
+require 'roda_alpha'
 require 'rspec'
 require 'rack/test'
 
@@ -8,7 +8,7 @@ describe 'The Hello App' do
   include Rack::Test::Methods
 
   def app
-    App
+    RodaAlpha::App
   end
 
   it 'say /' do

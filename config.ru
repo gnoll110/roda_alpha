@@ -1,3 +1,3 @@
-require 'lib/roda_alpha'
+require_relative 'lib/roda_alpha'
 
-run RodaAlpha.freeze.app
+run RodaAlpha::App.freeze.app
