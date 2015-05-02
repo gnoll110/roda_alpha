@@ -1,8 +1,10 @@
 require "roda"
+require 'tilt/haml'
 
 module RodaAlpha
   class App < Roda
     #use Rack::Session::Cookie, :secret => ENV['SECRET']
+    plugin :render, :engine=>'haml'
 
     route do |r|
       # GET / request
@@ -17,14 +19,16 @@ module RodaAlpha
 
         # GET /hello/world request
         r.get "world" do
-          "#{@greeting} world!"
+          #"#{@greeting} world!"
+          view 'foo'
         end
 
         # /hello request
         r.is do
           # GET /hello request
           r.get do
-            "#{@greeting}!"
+            #"#{@greeting}!"
+            view 'bar'
           end
 
           # POST /hello request
