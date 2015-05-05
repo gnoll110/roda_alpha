@@ -7,15 +7,6 @@ module RodaAlpha
     #use Rack::Session::Cookie, :secret => ENV['SECRET']
     plugin :render, :engine=>'haml'
 
-    database = 'alpha_dev'
-    user     = ENV["PGUSER"]
-    password = ENV["PGPASSWORD"]
-    DB = Sequel.connect(adapter: "postgres",
-                        database: database,
-                        host: "127.0.0.1",
-                        user: user,
-                        password: password)
-
     route do |r|
       # GET / request
       r.root do
