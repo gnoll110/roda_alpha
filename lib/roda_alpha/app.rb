@@ -20,7 +20,7 @@ module RodaAlpha
 
     Sequel::Model.plugin :validation_helpers
 
-    use Rack::Session::Cookies secret: "FG2HH4YTV6C7E8RJH9F0RDC3I4I50YGf6gh5uyd76hgrf5GGF3FDG5HJJ6N66G7gfD567",
+    use Rack::Session::Cookie, secret: "FG2HH4YTV6C7E8RJH9F0RDC3I4I50YGf6gh5uyd76hgrf5GGF3FDG5HJJ6N66G7gfD567",
                                key: "_roda_alpha_session"
     use Rack::Protection
     plugin :csrf
