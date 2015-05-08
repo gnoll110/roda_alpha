@@ -1,6 +1,8 @@
 require 'roda'
 require 'tilt/haml'
 require 'sequel'
+require 'bcrypt'
+require 'rack/protection'
 
 module RodaAlpha
   class App < Roda
@@ -15,6 +17,15 @@ module RodaAlpha
                         host: "127.0.0.1",
                         user: user,
                         password: password)
+
+    Sequel::Model.plugin :validation_helpers
+
+    use Rack::Session::Cookies secret: "FG2HH4YTV6C7E8RJH9F0RDC3I4I50YGf6gh5uyd76hgrf5GGF3FDG5HJJ6N66G7gfD567",
+                               key: "_roda_alpha_session"
+    use Rack::Protection
+    plugin :csrf
+
+    require './models/user.rb' 
 
     route do |r|
       # GET / request
